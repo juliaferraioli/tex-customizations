@@ -22,7 +22,7 @@
 \newcommand{\namesection}[4]{%
   \begin{tikzpicture}[remember picture, overlay]
     \node[rectangle, fill=#1, anchor=north, minimum width=\paperwidth, minimum height=5cm] (box) at (current page.north){};
-    \node[rectangle] (name) at (box){%
+    \node[rectangle, below = 1.5cm of current page.north] (name) at (current page.north){%
       \fontsize{35pt}{45pt}\selectfont\color{#2}%
       #3 #4
     };
@@ -30,7 +30,7 @@
       \noindent\rule{\paperwidth-3cm}{0.5pt}
     };
   \end{tikzpicture}
-  \vspace{1.5cm}
+  \vspace{1.25cm}
 }
 
 % Contact section %
