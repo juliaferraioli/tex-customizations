@@ -50,6 +50,23 @@
   \vspace{1.25cm}
 }
 
+% \bodysection takes three arguments: %
+% header title, color, and content %
+\newcommand{\bodysection}[3]{%
+  \begin{center}
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[rectangle, fill=#2, minimum width=\paperwidth, minimum height=1.5cm, anchor=center] (box){};
+    %at (current bounding box){};
+    \node[rectangle] (name) at (box) {%
+      \fontsize{20pt}{25pt}\selectfont\color{black}%
+      #1
+    };
+    \end{tikzpicture}
+  \end{center}
+  \vspace{1.25cm}
+  #3
+}
+
 % \jobentry takes 6 arguments: %
 % role, team, company, start, end, and responsibilities % 
 \usepackage{xstring}
