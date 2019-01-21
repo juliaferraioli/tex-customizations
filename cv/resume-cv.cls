@@ -47,18 +47,18 @@
     \end{tabu}
   \end{center}
   \end{adjustwidth}
-  \vspace{1.25cm}
+  \vspace{1cm}
 }
 
 % \bodysection takes three arguments: %
 % header title, color, and content %
+\usetikzlibrary{calc}
 \newcommand{\bodysection}[3]{%
   \begin{center}
   \begin{tikzpicture}[remember picture, overlay]
-    \node[rectangle, fill=#2, minimum width=\paperwidth, minimum height=1.5cm, anchor=center] (box){};
-    %at (current bounding box){};
-    \node[rectangle] (name) at (box) {%
-      \fontsize{20pt}{25pt}\selectfont\color{black}%
+    \node[rectangle, fill=#2, minimum width=\paperwidth, minimum height=1.25cm, anchor=center] (box){};
+    \node[rectangle, anchor=text] (name) at ($(box.west)+(2.5,-.25)$) {%
+      \fontsize{18pt}{23pt}\selectfont\color{black}%
       #1
     };
     \end{tikzpicture}
@@ -74,7 +74,7 @@
 
   \begin{adjustwidth}{-1ex}{-1ex} % to compensate for the width of the invisible border
     \noindent\begin{tabu}{ | [0pt] X[l] | [0pt] X[r] | [0pt] }
-    #1 for #2, #3 & #4 to #5\\
+    \textbf{#1} for \textbf{#2}, #3 & \textit{#4 to #5}\\
     \end{tabu}
   \end{adjustwidth}
 
