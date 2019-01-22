@@ -89,7 +89,7 @@
 \newcommand{\edentry}[6]{%
   \begin{adjustwidth}{-1ex}{-1ex} % to compensate for the width of the invisible border
     \noindent\begin{tabu}{ | [0pt] X[4,l] | [0pt] X[r] | [0pt] }
-    \textbf{#1} in \textbf{#2} (#3), #4 & \textit{#5}\\
+    \textbf{#1} in \textbf{#2}\IfStrEq{#3}{}{}{ (#3)}, #4 & \textit{#5}\\
     \end{tabu}
   \end{adjustwidth}
   \begin{flushleft}
