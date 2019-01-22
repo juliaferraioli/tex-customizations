@@ -97,3 +97,10 @@
     #6
   \end{flushleft}
 }
+% \skillentry takes 2 arguments: %
+% category and free-form description of skill(s) (will be rendered as plain text) %
+\newcommand{\skillentry}[2]{%
+  \begin{flushleft}
+    \textbf{#1:} #2\\
+  \end{flushleft}
+}
