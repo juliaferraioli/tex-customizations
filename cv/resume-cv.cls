@@ -97,10 +97,23 @@
     #6
   \end{flushleft}
 }
+
 % \skillentry takes 2 arguments: %
 % category and free-form description of skill(s) (will be rendered as plain text) %
 \newcommand{\skillentry}[2]{%
   \begin{flushleft}
     \textbf{#1:} #2\\
+  \end{flushleft}
+}
+
+% \pubentry takes 5 arguments: %
+% author(s), title, book/proceedings/etc... title, date, link %
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=false,
+}
+\newcommand{\pubentry}[5]{%
+  \begin{flushleft}
+    #1 ``#2''. \textit{#3}, #4\IfStrEq{#5}{}{.}{: \href{#5}{#5}}
   \end{flushleft}
 }
