@@ -13,7 +13,6 @@
 ]{Roboto}
 \usepackage{geometry}
 \geometry{legalpaper, portrait, margin=2.5cm}
-\usepackage{longtable}
 
 % \namesection takes four arguments: %
 % fill color, text color, first name, last name %
