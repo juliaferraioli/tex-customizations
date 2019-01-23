@@ -13,6 +13,7 @@
 ]{Roboto}
 \usepackage{geometry}
 \geometry{legalpaper, portrait, margin=2.5cm}
+\usepackage{xifthen}
 
 % \namesection takes four arguments: %
 % fill color, text color, first name, last name %
@@ -88,10 +89,10 @@
 \newcommand{\edentry}[6]{%
   \begin{adjustwidth}{-1ex}{-1ex} % to compensate for the width of the invisible border
     \noindent\begin{tabu}{ | [0pt] X[4,l] | [0pt] X[r] | [0pt] }
-    \textbf{#1} in \textbf{#2}\IfStrEq{#3}{}{}{ (#3)}, #4 & \textit{#5}\\
+    \textbf{#1} in \textbf{#2}\ifthenelse{\isempty{#3}}{}{}{ (#3)}, #4 & \textit{#5}\\
     \end{tabu}
   \end{adjustwidth}
-  \IfStrEq{#6}{}{}{
+  \ifthenelse{\isempty{#6}}{}{
     \begin{flushleft}
       \noindent Notable projects included:\\
       #6
@@ -115,6 +116,6 @@
 }
 \newcommand{\pubentry}[5]{%
   \begin{flushleft}
-    #1 ``#2''. \textit{#3}, #4\IfStrEq{#5}{}{.}{: \href{#5}{#5}}
+    #1 ``#2''. \textit{#3}, #4\ifthenelse{\isempty{#5}}{}{.}{: \href{#5}{#5}}
   \end{flushleft}
 }
