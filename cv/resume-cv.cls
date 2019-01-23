@@ -91,10 +91,12 @@
     \textbf{#1} in \textbf{#2}\IfStrEq{#3}{}{}{ (#3)}, #4 & \textit{#5}\\
     \end{tabu}
   \end{adjustwidth}
-  \begin{flushleft}
-    \noindent Notable projects included:\\
-    #6
-  \end{flushleft}
+  \IfStrEq{#6}{}{}{
+    \begin{flushleft}
+      \noindent Notable projects included:\\
+      #6
+    \end{flushleft}
+  }
 }
 
 % \skillentry takes 2 arguments: %
