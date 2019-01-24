@@ -13,6 +13,7 @@
 ]{Roboto}
 \usepackage{geometry}
 \geometry{legalpaper, portrait, margin=2.5cm}
+\usepackage{xcolor}
 \usepackage{xifthen}
 
 % \namesection takes four arguments: %
@@ -22,28 +23,29 @@
 \usepackage{anyfontsize}
 \usepackage{calc}
 \newcommand{\namesection}[4]{%
+  \definecolor{background}{HTML}{#1}
   \begin{tikzpicture}[remember picture, overlay]
-    \node[rectangle, fill=#1, anchor=north, minimum width=\paperwidth, minimum height=5cm] (box) at (current page.north){};
+    \node[rectangle, fill=background, anchor=north, minimum width=\paperwidth, minimum height=5cm] (box) at (current page.north){};
     \node[rectangle, below = 1.5cm of current page.north] (name) at (current page.north){%
-      \fontsize{35pt}{45pt}\selectfont\color{#2}%
+      \fontsize{35pt}{45pt}\selectfont\color[HTML]{#2}%
       #3 #4
     };
     \node[rectangle, below = 1.5cm of name] (line) at (name){%
-      \noindent\rule{\paperwidth-3cm}{0.5pt}
+      \color[HTML]{#2}\noindent\rule{\paperwidth-3cm}{1pt}
     };
   \end{tikzpicture}
   \vspace{1.25cm}
 }
 
-% \contactsection takes up to 3 arguments: %
-% left, center, right, aligned respectively %
+% \contactsection takes up to 4 arguments: %
+% text color, left, center, and right, aligned respectively %
 \usepackage{changepage}
 \usepackage{tabu}
-\newcommand{\contactsection}[3]{%
+\newcommand{\contactsection}[4]{%
 \begin{adjustwidth}{1cm}{1cm}
   \begin{center}
-    \begin{tabu}{ | [0pt] X[l] | [0pt] X[c] | [0pt] X[r] | [0pt] }
-      #1 & #2 & #3\\
+    \color[HTML]{#1}\begin{tabu}{ | [0pt] X[l] | [0pt] X[c] | [0pt] X[r] | [0pt] }
+      #2 & #3 & #4\\
     \end{tabu}
   \end{center}
   \end{adjustwidth}
@@ -54,9 +56,10 @@
 % header title, background color, text color, and content %
 \usetikzlibrary{calc}
 \newcommand{\bodysection}[4]{%
+  \definecolor{background}{HTML}{#2}
   \begin{center}
   \begin{tikzpicture}[remember picture, overlay]
-    \node[rectangle, fill=#2, minimum width=\paperwidth, minimum height=1.25cm, anchor=center] (box){};
+    \node[rectangle, fill=background, minimum width=\paperwidth, minimum height=1.25cm, anchor=center] (box){};
     \node[rectangle, anchor=text] (name) at ($(box.west)+(2.5,-.25)$) {%
       \fontsize{18pt}{23pt}\selectfont\color{#3}%
       #1
