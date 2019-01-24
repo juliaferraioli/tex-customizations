@@ -73,8 +73,8 @@
 \usepackage{xstring}
 \newcommand{\jobentry}[6]{%
   \begin{adjustwidth}{-1ex}{-1ex} % to compensate for the width of the invisible border
-    \noindent\begin{tabu}{ | [0pt] X[l] | [0pt] X[r] | [0pt] }
-    \textbf{#1} for \textbf{#2}, #3 & \textit{#4 to #5}\\
+    \noindent\begin{tabu}{ | [0pt] X[3,l] | [0pt] X[r] | [0pt] }
+    \textbf{#1}\ifthenelse{\isempty{#2}}{}{ for \textbf{#2}}, #3 & \textit{#4 to #5}\\
     \end{tabu}
   \end{adjustwidth}
   \begin{flushleft}
@@ -88,8 +88,8 @@
 \usepackage{xstring}
 \newcommand{\edentry}[6]{%
   \begin{adjustwidth}{-1ex}{-1ex} % to compensate for the width of the invisible border
-    \noindent\begin{tabu}{ | [0pt] X[4,l] | [0pt] X[r] | [0pt] }
-    \textbf{#1} in \textbf{#2}\ifthenelse{\isempty{#3}}{}{}{ (#3)}, #4 & \textit{#5}\\
+    \noindent\begin{tabu}{ | [0pt] X[3,l] | [0pt] X[r] | [0pt] }
+    \textbf{#1} in \textbf{#2}\ifthenelse{\isempty{#3}}{}{ (#3)}, #4 & \textit{#5}\\
     \end{tabu}
   \end{adjustwidth}
   \ifthenelse{\isempty{#6}}{}{
