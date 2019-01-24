@@ -51,20 +51,20 @@
 }
 
 % \bodysection takes three arguments: %
-% header title, color, and content %
+% header title, background color, text color, and content %
 \usetikzlibrary{calc}
-\newcommand{\bodysection}[3]{%
+\newcommand{\bodysection}[4]{%
   \begin{center}
   \begin{tikzpicture}[remember picture, overlay]
     \node[rectangle, fill=#2, minimum width=\paperwidth, minimum height=1.25cm, anchor=center] (box){};
     \node[rectangle, anchor=text] (name) at ($(box.west)+(2.5,-.25)$) {%
-      \fontsize{18pt}{23pt}\selectfont\color{black}%
+      \fontsize{18pt}{23pt}\selectfont\color{#3}%
       #1
     };
     \end{tikzpicture}
   \end{center}
   \vspace{.5cm}
-  #3
+  #4
   \vspace{.5cm}
 }
 
@@ -116,6 +116,6 @@
 }
 \newcommand{\pubentry}[5]{%
   \begin{flushleft}
-    #1 ``#2''. \textit{#3}, #4\ifthenelse{\isempty{#5}}{}{.}{: \href{#5}{#5}}
+    #1 ``#2''. \textit{#3}, #4\ifthenelse{\isempty{#5}}{.}{: \href{#5}{#5}}
   \end{flushleft}
 }
