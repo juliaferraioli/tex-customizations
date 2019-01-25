@@ -76,7 +76,7 @@
 \usepackage{xstring}
 \newcommand{\jobentry}[6]{%
   \begin{adjustwidth}{-1ex}{-1ex} % to compensate for the width of the invisible border
-    \noindent\begin{tabu}{ | [0pt] X[3,l] | [0pt] X[r] | [0pt] }
+    \noindent\begin{tabu}{ | [0pt] X[l] | [0pt] X[-.75,r] | [0pt] }
     \textbf{#1}\ifthenelse{\isempty{#2}}{}{ for \textbf{#2}}, #3 & \textit{#4 to #5}\\
     \end{tabu}
   \end{adjustwidth}
