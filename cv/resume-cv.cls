@@ -81,7 +81,6 @@
     \end{tabu}
   \end{adjustwidth}
   \begin{flushleft}
-    \noindent Core responsibilities \IfStrEq{#5}{present}{include}{included}:\\
     #6
   \end{flushleft}
 }
