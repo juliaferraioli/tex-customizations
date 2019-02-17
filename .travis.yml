@@ -1,0 +1,7 @@
+sudo: required
+language: generic
+services: docker
+
+script:
+  - docker pull moss/xelatex
+  - docker run --mount src=$TRAVIS_BUILD_DIR/cv,target=/usr/src/tex,type=bind moss/xelatex /bin/sh -c "xelatex resume.tex"
