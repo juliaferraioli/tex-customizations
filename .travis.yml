@@ -2,6 +2,15 @@ sudo: required
 language: generic
 services: docker
 
+before_install:
+  - mkdir fonts && cd "$_"
+  - git init
+  - git config core.sparsecheckout true
+  - echo apache/roboto/ >> .git/info/sparse-checkout
+  - git remote add origin -f https://github.com/google/fonts.git
+  - git pull origin master
+  - cp apache/roboto/* $TRAVIS_BUILD_DIR/cv/
+  - docker pull juliaferraioli/xelatex
+  
 script:
-  - docker pull moss/xelatex
-  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind moss/xelatex /bin/sh -c "xelatex cv/resume.tex"
+  - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/xelatex,type=bind juliaferraioli/xelatex /bin/sh -c "cd /usr/src/xelatex/cv;xelatex resume.tex"
