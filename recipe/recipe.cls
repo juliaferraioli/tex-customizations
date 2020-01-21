@@ -81,3 +81,10 @@
   \end{center}
   \vspace{1cm}
 } %
+
+% \ingredientitem takes three arguments: %
+% name of the ingredient, quantity of the ingredient, and type of measurement %
+\newcommand{\ingredientitem}[3]{ %
+  \fontsize{10pt}{12pt}\selectfont\color[HTML]{000000}
+  #1: #2 #3
+} %
