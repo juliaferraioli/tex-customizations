@@ -48,10 +48,20 @@
 \newcommand{\namesection}[1]{ %
   \definecolor{background}{HTML}{\@bcolor}
   \begin{tikzpicture}[remember picture, overlay]
-    \node[rectangle, fill=background, anchor=north, minimum width=\paperwidth, minimum height=5cm] (box) at (current page.north){};
+    \node[rectangle, fill=background, anchor=north, minimum width=\paperwidth, minimum height=4cm] (box) at (current page.north){};
     \node[rectangle, below = 1.5cm of current page.north] (name) at (current page.north){%
       \fontsize{35pt}{45pt}\selectfont\color[HTML]{\@tcolor}
       #1
     };
-    \end{tikzpicture}
-} %
+  \end{tikzpicture}
+  \vspace{2cm}
+  \linebreak
+%  \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}%
+} 
+
+% \narration takes one argument: %
+% the description of the recipe %
+\newcommand{\narration}[1]{ %
+  \fontsize{12pt}{14pt}\selectfont\color[HTML]{000000}
+  #1
+} 
