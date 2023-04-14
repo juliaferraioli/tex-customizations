@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{resume-cv}
 \LoadClass{article}
- 
+
 % Document settings %
 \usepackage{fontspec}
 \setmainfont[
@@ -42,12 +42,12 @@
 \usepackage{changepage}
 \usepackage{tabu}
 \newcommand{\contactsection}[4]{%
-\begin{adjustwidth}{1cm}{1cm}
-  \begin{center}
-    \color[HTML]{#1}\begin{tabu}{ | [0pt] X[l] | [0pt] X[c] | [0pt] X[r] | [0pt] }
-      #2 & #3 & #4\\
-    \end{tabu}
-  \end{center}
+  \begin{adjustwidth}{1cm}{1cm}
+    \begin{center}
+      \color[HTML]{#1}\begin{tabu}{ | [0pt] X[l] | [0pt] X[c] | [0pt] X[r] | [0pt] }
+        #2 & #3 & #4 \\
+      \end{tabu}
+    \end{center}
   \end{adjustwidth}
   \vspace{1cm}
 }
@@ -58,12 +58,12 @@
 \newcommand{\bodysection}[4]{%
   \definecolor{background}{HTML}{#2}
   \begin{center}
-  \begin{tikzpicture}[remember picture, overlay]
-    \node[rectangle, fill=background, minimum width=\paperwidth, minimum height=1.25cm, anchor=center] (box){};
-    \node[rectangle, anchor=text] (name) at ($(box.west)+(2.5,-.25)$) {%
-      \fontsize{18pt}{23pt}\selectfont\color{#3}%
-      #1
-    };
+    \begin{tikzpicture}[remember picture, overlay]
+      \node[rectangle, fill=background, minimum width=\paperwidth, minimum height=1.25cm, anchor=center] (box){};
+      \node[rectangle, anchor=text] (name) at ($(box.west)+(2.5,-.25)$) {%
+        \fontsize{18pt}{23pt}\selectfont\color{#3}%
+        #1
+      };
     \end{tikzpicture}
   \end{center}
   \vspace{.5cm}
@@ -77,7 +77,7 @@
 \newcommand{\jobentry}[6]{%
   \begin{adjustwidth}{-1ex}{-1ex} % to compensate for the width of the invisible border
     \noindent\begin{tabu}{ | [0pt] X[l] | [0pt] X[-.75,r] | [0pt] }
-    \textbf{#1}\ifthenelse{\isempty{#2}}{}{ for \textbf{#2}}, #3 & \textit{#4 to #5}\\
+      \textbf{#1}\ifthenelse{\isempty{#2}}{}{ for \textbf{#2}}\ifthenelse{\isempty{#3}}{ & \textit{#4 to #5}}{, #3 & \textit{#4 to #5}} \\
     \end{tabu}
   \end{adjustwidth}
   \begin{flushleft}
@@ -85,19 +85,25 @@
   \end{flushleft}
 }
 
-% \edentry takes 6 arguments: %
-% degree, major/area of focus, honors, institution, month, and year %
+% \edentry takes up to 7 arguments: %
+% degree, major/area of focus, honors, institution, month, year, and projects %
 \usepackage{xstring}
-\newcommand{\edentry}[6]{%
+\newcommand{\edentry}[7]{%
   \begin{adjustwidth}{-1ex}{-1ex} % to compensate for the width of the invisible border
     \noindent\begin{tabu}{ | [0pt] X[3,l] | [0pt] X[r] | [0pt] }
-    \textbf{#1} in \textbf{#2}\ifthenelse{\isempty{#3}}{}{ (#3)}, #4 & \textit{#5}\\
+      \textbf{#1} in \textbf{#2}\ifthenelse{\isempty{#3}}{}{ (#3)}, #4 & \textit{#5} \\
     \end{tabu}
   \end{adjustwidth}
   \ifthenelse{\isempty{#6}}{}{
     \begin{flushleft}
+      \vspace{-.25cm}\textit{With a focus in #6}
+    \end{flushleft}
+  }
+
+  \ifthenelse{\isempty{#7}}{}{
+    \begin{flushleft}
       \noindent Notable projects included:\\
-      #6
+      #7
     \end{flushleft}
   }
 }
